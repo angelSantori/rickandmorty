@@ -11,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final scrollController = ScrollController();
   @override
   void initState() {
     super.initState();
@@ -55,6 +56,9 @@ class CharacterList extends StatelessWidget {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
+        childAspectRatio: 0.87,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
       ),
       itemCount: apiProvider.characters.length,
       itemBuilder: (context, index) {
@@ -67,7 +71,7 @@ class CharacterList extends StatelessWidget {
             child: Column(
               children: [
                 FadeInImage(
-                    placeholder: const AssetImage('/assets/images/portal.gif'),
+                    placeholder: const AssetImage('assets/images/portal.gif'),
                     image: NetworkImage(character.image!)),
                 Text(
                   character.name!,
