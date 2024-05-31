@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ricknmorty/provider/api_provider.dart';
 import 'package:ricknmorty/widgets/character_list.dart';
+import 'package:ricknmorty/widgets/search_delegate.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -45,6 +46,13 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  showSearch(context: context, delegate: SearchCharacter());
+                },
+                icon: Icon(Icons.search))
+          ],
         ),
         body: SizedBox(
           height: double.infinity,
